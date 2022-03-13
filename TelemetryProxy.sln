@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32210.238
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D07B3531-5DB1-4C80-8179-C4DECC26ABC3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TelemetryProxy", "src\TelemetryProxy\TelemetryProxy.csproj", "{D0CF9892-3D00-46BF-81C4-2AB5D90A8BE8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{7F5D654F-5981-42DB-8053-773B5C3E7A1A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests", "tests\Tests\Tests.csproj", "{CD3CD22C-5208-4CAF-8022-AD078F7E769C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{1453C207-7226-4F37-89AC-3BD754057148}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Samples", "samples\Samples\Samples.csproj", "{5979E82A-9BC6-4A80-AAE9-C7F2CFD22B67}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TelemetryProxy.Microsoft.Extensions.DependencyInjection", "src\TelemetryProxy.Extensions.DependencyInjection\TelemetryProxy.Microsoft.Extensions.DependencyInjection.csproj", "{B188CC58-F3DB-4D29-A5C7-43F1C010FE50}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D0CF9892-3D00-46BF-81C4-2AB5D90A8BE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0CF9892-3D00-46BF-81C4-2AB5D90A8BE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0CF9892-3D00-46BF-81C4-2AB5D90A8BE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0CF9892-3D00-46BF-81C4-2AB5D90A8BE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD3CD22C-5208-4CAF-8022-AD078F7E769C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD3CD22C-5208-4CAF-8022-AD078F7E769C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD3CD22C-5208-4CAF-8022-AD078F7E769C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD3CD22C-5208-4CAF-8022-AD078F7E769C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5979E82A-9BC6-4A80-AAE9-C7F2CFD22B67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5979E82A-9BC6-4A80-AAE9-C7F2CFD22B67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5979E82A-9BC6-4A80-AAE9-C7F2CFD22B67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5979E82A-9BC6-4A80-AAE9-C7F2CFD22B67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B188CC58-F3DB-4D29-A5C7-43F1C010FE50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B188CC58-F3DB-4D29-A5C7-43F1C010FE50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B188CC58-F3DB-4D29-A5C7-43F1C010FE50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B188CC58-F3DB-4D29-A5C7-43F1C010FE50}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D0CF9892-3D00-46BF-81C4-2AB5D90A8BE8} = {D07B3531-5DB1-4C80-8179-C4DECC26ABC3}
+		{CD3CD22C-5208-4CAF-8022-AD078F7E769C} = {7F5D654F-5981-42DB-8053-773B5C3E7A1A}
+		{5979E82A-9BC6-4A80-AAE9-C7F2CFD22B67} = {1453C207-7226-4F37-89AC-3BD754057148}
+		{B188CC58-F3DB-4D29-A5C7-43F1C010FE50} = {D07B3531-5DB1-4C80-8179-C4DECC26ABC3}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {56106911-058C-4EA0-A9D2-679AD9FB7983}
+	EndGlobalSection
+EndGlobal

@@ -15,7 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{1453
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Samples", "samples\Samples\Samples.csproj", "{5979E82A-9BC6-4A80-AAE9-C7F2CFD22B67}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TelemetryProxy.Microsoft.Extensions.DependencyInjection", "src\TelemetryProxy.Extensions.DependencyInjection\TelemetryProxy.Microsoft.Extensions.DependencyInjection.csproj", "{B188CC58-F3DB-4D29-A5C7-43F1C010FE50}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TelemetryProxy.Extensions.DependencyInjection", "src\TelemetryProxy.Extensions.DependencyInjection\TelemetryProxy.Extensions.DependencyInjection.csproj", "{B188CC58-F3DB-4D29-A5C7-43F1C010FE50}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

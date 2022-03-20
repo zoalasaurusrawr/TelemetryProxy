@@ -8,7 +8,7 @@ public static class Extensions
         where TImplementation : class, TInterface
         where TInterface : class
     {
-        services.AddScoped<TInterface, TImplementation>(factory =>
+        services.AddScoped<TInterface>(factory =>
         {
             var target = ActivatorUtilities.CreateInstance<TImplementation>(services.BuildServiceProvider());
             var result = ActivityProxy<TInterface>.CreateWithTarget<TImplementation>(target);
@@ -16,14 +16,27 @@ public static class Extensions
         });
     }
 
-    public static void AddScopedWithInterception<TInterface, TImplementation, TProxyType>(this IServiceCollection services)
+    public static void AddProxiedTransient<TInterface, TImplementation>(this IServiceCollection services)
         where TImplementation : class, TInterface
         where TInterface : class
-        where TProxyType : DispatchProxy
     {
-        services.AddScoped<TInterface, TImplementation>(factory =>
+        services.AddTransient<TInterface>(factory =>
         {
-            var proxy = (DispatchProxy)ActivatorUtilities.CreateInstance<TProxyType>(services.BuildServiceProvider());
+            var target = ActivatorUtilities.CreateInstance<TImplementation>(services.BuildServiceProvider());
+            var result = ActivityProxy<TInterface>.CreateWithTarget<TImplementation>(target);
+            return result;
+        });
+    }
+
+    public static void AddProxiedSingleton<TInterface, TImplementation>(this IServiceCollection services)
+        where TImplementation : class, TInterface
+        where TInterface : class
+    {
+        services.AddSingleton<TInterface>(factory =>
+        {
+            var target = ActivatorUtilities.CreateInstance<TImplementation>(services.BuildServiceProvider());
+            var result = ActivityProxy<TInterface>.CreateWithTarget<TImplementation>(target);
+            return result;
         });
     }
 }

@@ -1,11 +1,19 @@
 using System.Diagnostics;
 using TelemetryProxy;
+using Tests.Fixtures;
 using Xunit;
 
 namespace Tests;
 
-public class ProxyCreationTests
+public class ProxyCreationTests : IClassFixture<ActivitySourceTestFixture>
 {
+    public ActivitySourceTestFixture Fixture { get; }
+
+    public ProxyCreationTests(ActivitySourceTestFixture fixture)
+    {
+        Fixture = fixture;
+    }
+
     [Fact]
     public void Creation_Succeeds()
     {
@@ -76,8 +84,7 @@ public class ProxyCreationTests
     public void Creation_And_Call_With_ActivitySource_And_Function_Args_Succeeds()
     {
         //Arrange
-        var activitySource = new ActivitySource(nameof(ProxyCreationTests));
-        ITestService service = ActivityProxy<ITestService>.Create<TestService>(activitySource);
+        ITestService service = ActivityProxy<ITestService>.Create<TestService>(Fixture.ActivitySource);
 
         //Act
         //Assert
@@ -88,8 +95,7 @@ public class ProxyCreationTests
     public void Creation_And_Call_With_ActivitySource_And_Constructor_And_Function_Args_Succeeds()
     {
         //Arrange
-        var activitySource = new ActivitySource(nameof(ProxyCreationTests));
-        ITestService service = ActivityProxy<ITestService>.Create<TestService>(activitySource, new object());
+        ITestService service = ActivityProxy<ITestService>.Create<TestService>(Fixture.ActivitySource, new object());
 
         //Act
         //Assert

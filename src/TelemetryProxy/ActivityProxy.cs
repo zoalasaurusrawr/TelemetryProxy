@@ -90,7 +90,7 @@ public class ActivityProxy<TInterface> : DispatchProxy, IInterceptionProxy<TInte
         return Create<TImplementation>(activitySource, args);
     }
 
-    public static TImplementation CreateWithTarget<TImplementation>(TImplementation target)
+    public static TInterface CreateWithTarget<TImplementation>(TImplementation target)
         where TImplementation : class, TInterface
     {
         var activitySourceName = GetActivitySourceName<TImplementation>();
@@ -113,10 +113,10 @@ public class ActivityProxy<TInterface> : DispatchProxy, IInterceptionProxy<TInte
         return result;
     }
 
-    public static TImplementation CreateWithTarget<TImplementation>(ActivitySource activitySource, TImplementation target)
+    public static TInterface CreateWithTarget<TImplementation>(ActivitySource activitySource, TImplementation target)
         where TImplementation : class, TInterface
     {
-        var proxy = Create<TInterface, ActivityProxy<TInterface>>() as ActivityProxy<TInterface>;
+        var proxy = Create<TInterface, ActivityProxy<TImplementation>>() as ActivityProxy<TImplementation>;
 
         if (proxy is not null && target is not null)
         {
@@ -124,7 +124,7 @@ public class ActivityProxy<TInterface> : DispatchProxy, IInterceptionProxy<TInte
             proxy.ActivitySource = activitySource;
         }
         TInterface result = proxy as TInterface ?? throw new Exception("An error occurred during proxy creation");
-        return result as TImplementation ?? throw new Exception($"Could not convert interface: {typeof(TInterface).Name} to implementation: {typeof(TImplementation).Name}");
+        return result;// as TImplementation ?? throw new Exception($"Could not convert interface: {typeof(TInterface).Name} to implementation: {typeof(TImplementation).Name}");
     }
     /// <summary>
     /// Try to get a suitable name for the activity source by

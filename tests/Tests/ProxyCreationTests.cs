@@ -101,4 +101,48 @@ public class ProxyCreationTests : IClassFixture<ActivitySourceTestFixture>
         //Assert
         service.DoWork(new object());
     }
+
+    [Fact]
+    public void Creation_And_Call_With_Function_With_Args_Succeeds()
+    {
+        //Arrange
+        ITestService service = ActivityProxy<ITestService>.Create<TestService>();
+
+        //Act
+        //Assert
+        service.DoNullableWork(new object());
+    }
+
+    [Fact]
+    public void Creation_And_Call_With_Constructor_And_Function_With_Args_Succeeds()
+    {
+        //Arrange
+        ITestService service = ActivityProxy<ITestService>.Create<TestService>(new object());
+
+        //Act
+        //Assert
+        service.DoNullableWork(new object());
+    }
+
+    [Fact]
+    public void Creation_And_Call_With_ActivitySource_And_Function_With_Args_Succeeds()
+    {
+        //Arrange
+        ITestService service = ActivityProxy<ITestService>.Create<TestService>(Fixture.ActivitySource);
+
+        //Act
+        //Assert
+        service.DoNullableWork(new object());
+    }
+
+    [Fact]
+    public void Creation_And_Call_With_ActivitySource_And_Constructor_And_Function_With_Args_Succeeds()
+    {
+        //Arrange
+        ITestService service = ActivityProxy<ITestService>.Create<TestService>(Fixture.ActivitySource, new object());
+
+        //Act
+        //Assert
+        service.DoNullableWork(new object());
+    }
 }

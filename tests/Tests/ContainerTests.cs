@@ -1,10 +1,12 @@
 ﻿using Lamar;
+using Microsoft.Extensions.DependencyInjection;
+using OpenTelemetry.Trace;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TelemetryProxy.Extensions.DependencyInjection;
+using TelemetryProxy;
 using Tests.Fixtures;
 using Xunit;
 
@@ -24,6 +26,12 @@ namespace Tests
         {
             var container = new Container(x =>
             {
+                x.AddOpenTelemetryTracing((builder) => builder
+                    .SetResourceBuilder(Fixture.ResourceBuilder)
+                    .AddSource(TelemetrySource.ActivitySource.Name)
+                    .AddConsoleExporter()
+                );
+                x.AddTelemetryProxy();
                 x.AddProxiedScoped<ITestService, TestService>();
             });
 
@@ -37,6 +45,12 @@ namespace Tests
         {
             var container = new Container(x =>
             {
+                x.AddOpenTelemetryTracing((builder) => builder
+                    .SetResourceBuilder(Fixture.ResourceBuilder)
+                    .AddSource(TelemetrySource.ActivitySource.Name)
+                    .AddConsoleExporter()
+                );
+                x.AddTelemetryProxy();
                 x.AddProxiedTransient<ITestService, TestService>();
             });
 
@@ -50,6 +64,12 @@ namespace Tests
         {
             var container = new Container(x =>
             {
+                x.AddOpenTelemetryTracing((builder) => builder
+                    .SetResourceBuilder(Fixture.ResourceBuilder)
+                    .AddSource(TelemetrySource.ActivitySource.Name)
+                    .AddConsoleExporter()
+                );
+                x.AddTelemetryProxy();
                 x.AddProxiedSingleton<ITestService, TestService>();
             });
 

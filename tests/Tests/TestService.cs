@@ -10,6 +10,7 @@ namespace Tests
     {
         void DoWork();
         void DoWork(object arg);
+        void DoNullableWork(object arg, object? arg2 = null);
     }
 
     internal class TestService : ITestService
@@ -32,6 +33,11 @@ namespace Tests
         }
 
         public void DoWork(object arg)
+        {
+
+        }
+
+        public void DoNullableWork(object arg, object? arg2 = null)
         {
 
         }

@@ -12,11 +12,11 @@ using Xunit;
 
 namespace Tests
 {
-    public class ContainerTests : IClassFixture<ActivitySourceTestFixture>
+    public class ContainerTests : IClassFixture<ProxyTestFixture>
     {
-        public ActivitySourceTestFixture Fixture { get; }
+        public ProxyTestFixture Fixture { get; }
 
-        public ContainerTests(ActivitySourceTestFixture fixture)
+        public ContainerTests(ProxyTestFixture fixture)
         {
             Fixture = fixture;
         }
@@ -32,7 +32,7 @@ namespace Tests
                     .AddConsoleExporter()
                 );
                 x.AddTelemetryProxy();
-                x.AddProxiedScoped<ITestService, TestService>();
+                x.AddTracedScoped<ITestService, TestService>();
             });
 
             var service = container.GetInstance<ITestService>();
@@ -51,7 +51,7 @@ namespace Tests
                     .AddConsoleExporter()
                 );
                 x.AddTelemetryProxy();
-                x.AddProxiedTransient<ITestService, TestService>();
+                x.AddTracedTransient<ITestService, TestService>();
             });
 
             var service = container.GetInstance<ITestService>();
@@ -70,7 +70,7 @@ namespace Tests
                     .AddConsoleExporter()
                 );
                 x.AddTelemetryProxy();
-                x.AddProxiedSingleton<ITestService, TestService>();
+                x.AddTracedSingleton<ITestService, TestService>();
             });
 
             var service = container.GetInstance<ITestService>();

@@ -1,15 +1,19 @@
-using System.Diagnostics;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using TelemetryProxy;
 using Tests.Fixtures;
 using Xunit;
 
 namespace Tests;
 
-public class ProxyCreationTests : IClassFixture<ActivitySourceTestFixture>
+public class LoggingProxyTests : IClassFixture<ProxyTestFixture>
 {
-    public ActivitySourceTestFixture Fixture { get; }
+    public ProxyTestFixture Fixture { get; }
 
-    public ProxyCreationTests(ActivitySourceTestFixture fixture)
+    public LoggingProxyTests(ProxyTestFixture fixture)
     {
         Fixture = fixture;
     }
@@ -19,7 +23,7 @@ public class ProxyCreationTests : IClassFixture<ActivitySourceTestFixture>
     {
         //Arrange
         //Act
-        ITestService service = ActivityProxy<ITestService>.Create<TestService>();
+        ITestService service = LoggingProxy<ITestService>.Create<TestService>();
 
         //Assert
         Assert.NotNull(service);
@@ -30,7 +34,7 @@ public class ProxyCreationTests : IClassFixture<ActivitySourceTestFixture>
     {
         //Arrange
         //Act
-        ITestService service = ActivityProxy<ITestService>.Create<TestService>(new object());
+        ITestService service = LoggingProxy<ITestService>.Create<TestService>(Fixture.LoggerFactory, new object());
 
         //Assert
         Assert.NotNull(service);
@@ -40,7 +44,7 @@ public class ProxyCreationTests : IClassFixture<ActivitySourceTestFixture>
     public void Creation_And_Call_Succeeds()
     {
         //Arrange
-        ITestService service = ActivityProxy<ITestService>.Create<TestService>();
+        ITestService service = LoggingProxy<ITestService>.Create<TestService>();
 
         //Act
         //Assert
@@ -51,7 +55,7 @@ public class ProxyCreationTests : IClassFixture<ActivitySourceTestFixture>
     public void Creation_And_Call_With_Constructor_Args_Succeeds()
     {
         //Arrange
-        ITestService service = ActivityProxy<ITestService>.Create<TestService>(new object());
+        ITestService service = LoggingProxy<ITestService>.Create<TestService>(Fixture.LoggerFactory, new object());
 
         //Act
         //Assert
@@ -62,7 +66,7 @@ public class ProxyCreationTests : IClassFixture<ActivitySourceTestFixture>
     public void Creation_And_Call_With_Function_Args_Succeeds()
     {
         //Arrange
-        ITestService service = ActivityProxy<ITestService>.Create<TestService>();
+        ITestService service = LoggingProxy<ITestService>.Create<TestService>();
 
         //Act
         //Assert
@@ -73,7 +77,7 @@ public class ProxyCreationTests : IClassFixture<ActivitySourceTestFixture>
     public void Creation_And_Call_With_Constructor_And_Function_Args_Succeeds()
     {
         //Arrange
-        ITestService service = ActivityProxy<ITestService>.Create<TestService>(new object());
+        ITestService service = LoggingProxy<ITestService>.Create<TestService>(Fixture.LoggerFactory, new object());
 
         //Act
         //Assert
@@ -84,7 +88,7 @@ public class ProxyCreationTests : IClassFixture<ActivitySourceTestFixture>
     public void Creation_And_Call_With_ActivitySource_And_Function_Args_Succeeds()
     {
         //Arrange
-        ITestService service = ActivityProxy<ITestService>.Create<TestService>(Fixture.ActivitySource);
+        ITestService service = LoggingProxy<ITestService>.Create<TestService>(Fixture.ActivitySource, Fixture.LoggerFactory);
 
         //Act
         //Assert
@@ -95,7 +99,7 @@ public class ProxyCreationTests : IClassFixture<ActivitySourceTestFixture>
     public void Creation_And_Call_With_ActivitySource_And_Constructor_And_Function_Args_Succeeds()
     {
         //Arrange
-        ITestService service = ActivityProxy<ITestService>.Create<TestService>(Fixture.ActivitySource, new object());
+        ITestService service = LoggingProxy<ITestService>.Create<TestService>(Fixture.ActivitySource, Fixture.LoggerFactory, new object());
 
         //Act
         //Assert
@@ -106,7 +110,7 @@ public class ProxyCreationTests : IClassFixture<ActivitySourceTestFixture>
     public void Creation_And_Call_With_Function_With_Args_Succeeds()
     {
         //Arrange
-        ITestService service = ActivityProxy<ITestService>.Create<TestService>();
+        ITestService service = LoggingProxy<ITestService>.Create<TestService>();
 
         //Act
         //Assert
@@ -117,7 +121,7 @@ public class ProxyCreationTests : IClassFixture<ActivitySourceTestFixture>
     public void Creation_And_Call_With_Constructor_And_Function_With_Args_Succeeds()
     {
         //Arrange
-        ITestService service = ActivityProxy<ITestService>.Create<TestService>(new object());
+        ITestService service = LoggingProxy<ITestService>.Create<TestService>(Fixture.LoggerFactory, new object());
 
         //Act
         //Assert
@@ -128,7 +132,7 @@ public class ProxyCreationTests : IClassFixture<ActivitySourceTestFixture>
     public void Creation_And_Call_With_ActivitySource_And_Function_With_Args_Succeeds()
     {
         //Arrange
-        ITestService service = ActivityProxy<ITestService>.Create<TestService>(Fixture.ActivitySource);
+        ITestService service = LoggingProxy<ITestService>.Create<TestService>(Fixture.ActivitySource, Fixture.LoggerFactory);
 
         //Act
         //Assert
@@ -139,7 +143,7 @@ public class ProxyCreationTests : IClassFixture<ActivitySourceTestFixture>
     public void Creation_And_Call_With_ActivitySource_And_Constructor_And_Function_With_Args_Succeeds()
     {
         //Arrange
-        ITestService service = ActivityProxy<ITestService>.Create<TestService>(Fixture.ActivitySource, new object());
+        ITestService service = LoggingProxy<ITestService>.Create<TestService>(Fixture.ActivitySource, Fixture.LoggerFactory, new object());
 
         //Act
         //Assert

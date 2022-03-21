@@ -18,7 +18,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddTelemetryProxy();
-builder.Services.AddProxiedScoped<IWeatherService, WeatherService>();
+builder.Services.AddTracedScoped<IWeatherService, WeatherService>();
 
 var app = builder.Build();
 

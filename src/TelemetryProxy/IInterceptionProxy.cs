@@ -4,7 +4,7 @@ namespace TelemetryProxy
 {
     public interface IInterceptionProxy<TInterface> where TInterface : class
     {
-        ActivitySource? ActivitySource { get; }
+        //ActivitySource? ActivitySource { get; }
         TInterface? Target { get; set; }
     }
 }
